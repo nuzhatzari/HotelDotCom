@@ -38,19 +38,23 @@
             
         NSArray *guestReviews = [[[data objectForKey:@"reviewData"] objectForKey:@"guestReviewGroups"] objectForKey:@"guestReviews"];
         if (guestReviews != nil && guestReviews.count > 0) {
-            NSArray *reviewData = [[guestReviews objectAtIndex:0] objectForKey:@"reviews"];
-            
-            for (NSDictionary *entity in reviewData) {
-                Review *review = [[Review alloc] init];
-                review.title = [entity valueForKey:@"title"];
-                review.summary = [entity valueForKey:@"summary"];
-                review.rating = [entity valueForKey:@"rating"];
-                review.formattedRating = [entity valueForKey:@"formattedRating"];;
-                review.recommendedBy = [entity valueForKey:@"recommendedBy"];;
-                review.qualitativeBadgeText = [entity valueForKey:@"qualitativeBadgeText"];;
-                review.postedOn = [entity valueForKey:@"postedOn"];
-                reviews = [reviews arrayByAddingObject:review];
+            for (NSDictionary *guestReview in guestReviews) {
+             
+               NSArray *reviewData = [guestReview objectForKey:@"reviews"];
+                
+                for (NSDictionary *entity in reviewData) {
+                    Review *review = [[Review alloc] init];
+                    review.title = [entity valueForKey:@"title"];
+                    review.summary = [entity valueForKey:@"summary"];
+                    review.rating = [entity valueForKey:@"rating"];
+                    review.formattedRating = [entity valueForKey:@"formattedRating"];;
+                    review.recommendedBy = [entity valueForKey:@"recommendedBy"];;
+                    review.qualitativeBadgeText = [entity valueForKey:@"qualitativeBadgeText"];;
+                    review.postedOn = [entity valueForKey:@"postedOn"];
+                    reviews = [reviews arrayByAddingObject:review];
+                }
             }
+             
         }
         dict[@"reviews"] = reviews;
         
