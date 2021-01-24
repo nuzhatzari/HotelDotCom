@@ -1,8 +1,8 @@
 # HotelDotCom
 Please find below environment details 
-XCode version - 11.6 
-iOS version - 13.6 
-Device - iPhone Mode - Portrait
+1. XCode version - 11.6 
+2. iOS version - 13.6 
+3. Device - iPhone Mode - Portrait
 
 Please follow the below instruction to run the app on simulator
 
